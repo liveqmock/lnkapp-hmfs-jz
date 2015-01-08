@@ -1,3 +1,10 @@
+.idea/
+lib/
+out/
+doc/
+db/
+*.iml
+
 *.class
 
 # Mobile Tools for Java (J2ME)
