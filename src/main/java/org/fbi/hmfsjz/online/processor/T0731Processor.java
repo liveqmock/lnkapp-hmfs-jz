@@ -3,7 +3,7 @@ package org.fbi.hmfsjz.online.processor;
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.enums.TxnRtnCode;
 import org.fbi.hmfsjz.enums.VoucherStatus;
-import org.fbi.hmfsjz.online.service.Txn0631Service;
+import org.fbi.hmfsjz.online.service.Txn0731Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -38,14 +38,14 @@ public class T0731Processor extends AbstractTxnProcessor {
             }
         }
 
-        logger.info("[1500631票据使用与作废][网点号]" + branchID + "[柜员号]" + tellerID
+        logger.info("[1500731票据使用与作废][网点号]" + branchID + "[柜员号]" + tellerID
                 + "  [票据编号] " + vchNo + "[票据状态]" + vchSts + "[缴款单编号]" + billNo);
 
         try {
-            new Txn0631Service().process(branchID, tellerID, vchNo, billNo, vchSts);
+            new Txn0731Service().process(branchID, tellerID, vchNo, billNo, vchSts);
 
         } catch (Exception e) {
-            logger.error("[1500631][hmfsjz 票据使用与作废]失败", e);
+            logger.error("[1500731][hmfsjz 票据使用与作废]失败", e);
             throw new RuntimeException(e);
         }
     }

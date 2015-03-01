@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.gateway.domain.txn.Toa3002;
-import org.fbi.hmfsjz.online.service.Txn0621Service;
+import org.fbi.hmfsjz.online.service.Txn0721Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -25,18 +25,18 @@ public class T0721Processor extends AbstractTxnProcessor {
         // 退款书编号
         String refundNo = fieldArray[0];
 
-        logger.info("[1500621][3002][hmfsjz 退款书退款确认][网点号]" + branchID + "[柜员号]" + tellerID
+        logger.info("[1500721][3002][hmfsjz 退款书退款确认][网点号]" + branchID + "[柜员号]" + tellerID
                 + "  [退款书编号] " + refundNo);
 
         String serialNo = request.getHeader("serialNo");
         String txnDate = request.getHeader("txnTime");
         try {
             // 交易发起
-            Toa3002 toa = (Toa3002) new Txn0621Service().process(tellerID, branchID, serialNo, refundNo, txnDate);
+            Toa3002 toa = (Toa3002) new Txn0721Service().process(tellerID, branchID, serialNo, refundNo, txnDate);
 
             response.setResponseBody(assembleStr(toa).getBytes(THIRDPARTY_SERVER_CODING));
         } catch (Exception e) {
-            logger.error("[1500621][3002][hmfsjz 退款单退款确认]失败", e);
+            logger.error("[1500721][3002][hmfsjz 退款单退款确认]失败", e);
             throw new RuntimeException(e);
         }
     }

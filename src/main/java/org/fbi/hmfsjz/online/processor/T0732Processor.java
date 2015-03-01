@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.enums.TxnRtnCode;
-import org.fbi.hmfsjz.online.service.Txn0632Service;
+import org.fbi.hmfsjz.online.service.Txn0732Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -28,11 +28,11 @@ public class T0732Processor extends AbstractTxnProcessor {
         String branchID = request.getHeader("branchId");
         String tellerID = request.getHeader("tellerId");
 
-        logger.info("[1500632票据使用情况查询][日期]" + date8 + "[单号]" + billNo +
+        logger.info("[1500732票据使用情况查询][日期]" + date8 + "[单号]" + billNo +
                 " [网点]" + branchID + "[柜员]" + tellerID);
 
         try {
-            String strVchs = new Txn0632Service().process(date8, billNo);
+            String strVchs = new Txn0732Service().process(date8, billNo);
             if (StringUtils.isEmpty(strVchs)) {
                 response.setHeader("rtnCode", TxnRtnCode.TXN_FAILED.getCode());
                 response.setResponseBody("没有查询到票据信息".getBytes(THIRDPARTY_SERVER_CODING));
@@ -41,7 +41,7 @@ public class T0732Processor extends AbstractTxnProcessor {
             }
 
         } catch (Exception e) {
-            logger.error("[1500632][hmfsjz 票据使用情况查询]失败", e);
+            logger.error("[1500732][hmfsjz 票据使用情况查询]失败", e);
             throw new RuntimeException(e);
         }
     }

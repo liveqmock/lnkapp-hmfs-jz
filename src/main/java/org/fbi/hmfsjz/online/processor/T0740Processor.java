@@ -3,7 +3,7 @@ package org.fbi.hmfsjz.online.processor;
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.enums.DrawQryStatus;
 import org.fbi.hmfsjz.gateway.domain.txn.Toa3003;
-import org.fbi.hmfsjz.online.service.Txn0640Service;
+import org.fbi.hmfsjz.online.service.Txn0740Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -28,16 +28,16 @@ public class T0740Processor extends AbstractTxnProcessor {
         String branchID = request.getHeader("branchId");
         String tellerID = request.getHeader("tellerId");
 
-        logger.info("[1500640][3003][hmfsjz 支取查询][网点号]" + branchID + "[柜员号]" + tellerID
+        logger.info("[1500740][3003][hmfsjz 支取查询][网点号]" + branchID + "[柜员号]" + tellerID
                 + "  [支取编号] " + billNo);
 
         String txnTime = request.getHeader("txnTime");
         try {
-            Toa3003 toa = (Toa3003) new Txn0640Service().process(tellerID, branchID, billNo, txnTime);
+            Toa3003 toa = (Toa3003) new Txn0740Service().process(tellerID, branchID, billNo, txnTime);
             response.setResponseBody(assembleStr(toa).getBytes(THIRDPARTY_SERVER_CODING));
 
         } catch (Exception e) {
-            logger.error("[1500640][3003][hmfsjz 支取单查询]失败", e);
+            logger.error("[1500740][3003][hmfsjz 支取单查询]失败", e);
             throw new RuntimeException(e);
         }
     }

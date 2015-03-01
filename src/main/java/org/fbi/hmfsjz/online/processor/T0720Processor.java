@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.gateway.domain.txn.Toa3001;
-import org.fbi.hmfsjz.online.service.Txn0620Service;
+import org.fbi.hmfsjz.online.service.Txn0720Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -26,18 +26,18 @@ public class T0720Processor extends AbstractTxnProcessor {
         String branchID = request.getHeader("branchId");
         String tellerID = request.getHeader("tellerId");
 
-        logger.info("[1500620][3001][hmfsjz 退款单查询][网点号]" + branchID + "[柜员号]" + tellerID
+        logger.info("[1500720][3001][hmfsjz 退款单查询][网点号]" + branchID + "[柜员号]" + tellerID
                 + "  [退款书编号] " + billNo);
 
         String serialNo = request.getHeader("serialNo");
         String txnDate = request.getHeader("txnTime");
         try {
-            Toa3001 toa = (Toa3001)new Txn0620Service().process(tellerID, branchID, billNo, txnDate);
+            Toa3001 toa = (Toa3001)new Txn0720Service().process(tellerID, branchID, billNo, txnDate);
 
             response.setResponseBody(assembleStr(toa).getBytes(THIRDPARTY_SERVER_CODING));
 
         } catch (Exception e) {
-            logger.error("[1500620][3001][hmfsjz 退款单查询]失败", e);
+            logger.error("[1500720][3001][hmfsjz 退款单查询]失败", e);
             throw new RuntimeException(e);
         }
     }

@@ -23,11 +23,11 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * 1500641 支取确认 业务逻辑
+ * 1500741 支取确认 业务逻辑
  */
-public class Txn0641Service {
+public class Txn0741Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0641Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0741Service.class);
     private DrawService drawService = new DrawService();
     private ActirtService actirtService = new ActirtService();
     MybatisManager manager = new MybatisManager();

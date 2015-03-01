@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.gateway.domain.txn.Toa1001;
-import org.fbi.hmfsjz.online.service.Txn0610Service;
+import org.fbi.hmfsjz.online.service.Txn0710Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -25,12 +25,12 @@ public class T0710Processor extends AbstractTxnProcessor {
         String branchID = request.getHeader("branchId");
         String tellerID = request.getHeader("tellerId");
 
-        logger.info("[1500610缴款书信息查询][网点号]" + branchID + "[柜员号]" + tellerID + "  [缴款书编号] " + billNo);
+        logger.info("[1500710缴款书信息查询][网点号]" + branchID + "[柜员号]" + tellerID + "  [缴款书编号] " + billNo);
         try {
-            Toa1001 toa = (Toa1001) new Txn0610Service().process(tellerID, branchID, billNo);
+            Toa1001 toa = (Toa1001) new Txn0710Service().process(tellerID, branchID, billNo);
             response.setResponseBody(assembleStr(toa).getBytes(THIRDPARTY_SERVER_CODING));
         } catch (Exception e) {
-            logger.error("[1500610][1001][hmfsjz 缴款单查询]失败", e);
+            logger.error("[1500710][1001][hmfsjz 缴款单查询]失败", e);
             throw new RuntimeException(e);
         }
     }

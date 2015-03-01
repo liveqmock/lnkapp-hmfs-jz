@@ -13,11 +13,11 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 /**
- * 1500632 票据使用情况查询
+ * 1500732 票据使用情况查询
  */
-public class Txn0632Service {
+public class Txn0732Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0632Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0732Service.class);
     MybatisManager manager = new MybatisManager();
 
     public String process(String date8, String billNo) {
@@ -34,13 +34,15 @@ public class Txn0632Service {
                 if (StringUtils.isEmpty(vchs)) {
                     return vchs;
                 } else
-                    return useCnt + "|" + delCnt + "|" + vchs;
+//                    return useCnt + "|" + delCnt + "|" + vchs;
+                    return  vchs;
             } else {
                 List<VoucherBill> vchList = mapper.qryVoucher(billNo);
                 if (vchList == null || vchList.isEmpty()) {
                     return null;
                 } else {
-                    return useCnt + "|" + delCnt + "|" + transVchsToStr(vchList);
+//                    return useCnt + "|" + delCnt + "|" + transVchsToStr(vchList);
+                    return transVchsToStr(vchList);
                 }
             }
         } finally {

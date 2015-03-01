@@ -13,11 +13,11 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 1500650 分户查询
+ * 1500750 分户查询
  */
-public class Txn0650Service {
+public class Txn0750Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0650Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0750Service.class);
 
     public Toa process(String tellerID, String branchID, List<String> houseAccounts) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
 

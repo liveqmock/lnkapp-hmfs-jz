@@ -17,11 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 1500620 退款单查询交易 业务逻辑  每个缴款单号对应的分户有且只有一个，销户时需将原分户删除，重新开户
+ * 1500720 退款单查询交易 业务逻辑  每个缴款单号对应的分户有且只有一个，销户时需将原分户删除，重新开户
  */
-public class Txn0620Service {
+public class Txn0720Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0620Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0720Service.class);
     private RefundService refundService = new RefundService();
 
     public Toa process(String tellerID, String branchID, String billNo, String txnDate) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {

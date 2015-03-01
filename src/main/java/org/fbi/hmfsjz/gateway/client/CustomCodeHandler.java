@@ -34,12 +34,12 @@ public class CustomCodeHandler {
         byte[] bytes = new byte[msglength];
         System.arraycopy(len.getBytes(), 0, bytes, 0, 8);
         System.arraycopy(msg.getBytes(), 0, bytes, 8, msglength - 8);
-        logger.info("[LNKAPP-HMFS-JM客户端]发送报文：" + msg);
+        logger.info("[LNKAPP-HMFS-JZ客户端]发送报文：" + msg);
         return bytes;
     }
 
     public static Toa decode(byte[] bytes) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
-        logger.info("[LNKAPP-HMFS-JM 客户端接收]" + new String(bytes));
+        logger.info("[LNKAPP-HMFS-JZ 客户端接收]" + new String(bytes));
 
         String wsysid = new String(bytes, 4, 10).trim();
         String txnCode = new String(bytes, 14, 10).trim();

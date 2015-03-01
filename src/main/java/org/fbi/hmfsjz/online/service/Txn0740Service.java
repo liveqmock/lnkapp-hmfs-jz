@@ -20,11 +20,11 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 1500640 支取查询
+ * 1500740 支取查询
  */
-public class Txn0640Service {
+public class Txn0740Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0640Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0740Service.class);
     private DrawService drawService = new DrawService();
 
     public Toa process(String tellerID, String branchID, String billNo, String txnDate) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {

@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.gateway.domain.txn.Toa5001;
-import org.fbi.hmfsjz.online.service.Txn0650Service;
+import org.fbi.hmfsjz.online.service.Txn0750Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -31,12 +31,12 @@ public class T0750Processor extends AbstractTxnProcessor {
         List<String> acts = new ArrayList<String>();
         acts.add(houseAccout);
 
-        logger.info("[1500650分户信息查询][网点号]" + branchID + "[柜员号]" + tellerID + "  [分户账号] " + houseAccout);
+        logger.info("[1500750分户信息查询][网点号]" + branchID + "[柜员号]" + tellerID + "  [分户账号] " + houseAccout);
         try {
-            Toa5001 toa = (Toa5001) new Txn0650Service().process(tellerID, branchID, acts);
+            Toa5001 toa = (Toa5001) new Txn0750Service().process(tellerID, branchID, acts);
             response.setResponseBody(assembleStr(toa).getBytes(THIRDPARTY_SERVER_CODING));
         } catch (Exception e) {
-            logger.error("[1500650][5001][hmfsjz 分户账号查询]失败", e);
+            logger.error("[1500750][5001][hmfsjz 分户账号查询]失败", e);
             throw new RuntimeException(e);
         }
     }

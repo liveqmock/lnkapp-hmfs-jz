@@ -17,11 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 1500610 缴款单查询交易 业务逻辑
+ * 1500710 缴款单查询交易 业务逻辑
  */
-public class Txn0610Service {
+public class Txn0710Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0610Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0710Service.class);
     private BillService billService = new BillService();
 
     public Toa process(String tellerID, String branchID, String billNo) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {

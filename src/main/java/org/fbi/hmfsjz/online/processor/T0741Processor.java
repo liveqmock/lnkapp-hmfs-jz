@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.gateway.domain.txn.Toa3004;
-import org.fbi.hmfsjz.online.service.Txn0641Service;
+import org.fbi.hmfsjz.online.service.Txn0741Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -26,17 +26,17 @@ public class T0741Processor extends AbstractTxnProcessor {
         // 支取编号
         String drawNo = fieldArray[0];
 
-        logger.info("[1500641][3004][hmfsjz 支取确认][网点号]" + branchID + "[柜员号]" + tellerID
+        logger.info("[1500741][3004][hmfsjz 支取确认][网点号]" + branchID + "[柜员号]" + tellerID
                 + "  [支取编号] " + drawNo);
 
         String serialNo = request.getHeader("serialNo");
         String txnDate = request.getHeader("txnTime");
         try {
             // 交易发起
-            Toa3004 toa = (Toa3004) new Txn0641Service().process(tellerID, branchID, serialNo, drawNo, txnDate);
+            Toa3004 toa = (Toa3004) new Txn0741Service().process(tellerID, branchID, serialNo, drawNo, txnDate);
             response.setResponseBody(assembleStr(toa).getBytes(THIRDPARTY_SERVER_CODING));
         } catch (Exception e) {
-            logger.error("[1500641][3004][hmfsjz 支取确认]失败", e);
+            logger.error("[1500741][3004][hmfsjz 支取确认]失败", e);
             throw new RuntimeException(e);
         }
     }

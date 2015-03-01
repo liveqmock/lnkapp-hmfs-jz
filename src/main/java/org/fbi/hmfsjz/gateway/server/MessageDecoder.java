@@ -38,7 +38,7 @@ public class MessageDecoder  extends ByteToMessageDecoder {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("报文解码字符集错误.", e);
         }
-        logger.info("[LNKAPP-HMFS-JM 接收报文内容：]" + msg);
+        logger.info("[LNKAPP-HMFS-JZ 接收报文内容：]" + msg);
         out.add(msg);
     }
 }

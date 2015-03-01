@@ -25,14 +25,14 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 1500611 缴款单缴款确认 业务逻辑 每个缴款单号对应的分户有且只有一个，销户时需将原分户删除，重新开户
+ * 1500711 缴款单缴款确认 业务逻辑 每个缴款单号对应的分户有且只有一个，销户时需将原分户删除，重新开户
  * **** 注意缴款交易需参考计息协议 ******
  * 开户时，记录首存日期、计息日、上次存款日为交易日期
  * 续缴款时，更新上次存款日、计息日为交易日期
  */
-public class Txn0611Service {
+public class Txn0711Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0611Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0711Service.class);
     private BillService billService = new BillService();
 
     MybatisManager manager = new MybatisManager();

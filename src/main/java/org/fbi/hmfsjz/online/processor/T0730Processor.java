@@ -2,7 +2,7 @@ package org.fbi.hmfsjz.online.processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fbi.hmfsjz.enums.TxnRtnCode;
-import org.fbi.hmfsjz.online.service.Txn0630Service;
+import org.fbi.hmfsjz.online.service.Txn0730Service;
 import org.fbi.linking.processor.ProcessorException;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorRequest;
 import org.fbi.linking.processor.standprotocol10.Stdp10ProcessorResponse;
@@ -27,7 +27,7 @@ public class T0730Processor extends AbstractTxnProcessor {
 
         String branchID = request.getHeader("branchId");
         String tellerID = request.getHeader("tellerId");
-        logger.info("[1500630票据领用][网点号]" + branchID + "[柜员号]" + tellerID
+        logger.info("[1500730票据领用][网点号]" + branchID + "[柜员号]" + tellerID
                 + "  [起始编号] " + vchStartNo + "[结束编号]" + vchEndNo);
 
         try {
@@ -37,10 +37,10 @@ public class T0730Processor extends AbstractTxnProcessor {
                 response.setHeader("rtnCode", TxnRtnCode.TXN_FAILED.getCode());
                 response.setResponseBody("起始编号不能大于终止编号".getBytes(THIRDPARTY_SERVER_CODING));
             } else {
-                new Txn0630Service().process(branchID, tellerID, startNo, endNo);
+                new Txn0730Service().process(branchID, tellerID, startNo, endNo);
             }
         } catch (Exception e) {
-            logger.error("[1500630][hmfsjz 票据领用]失败", e);
+            logger.error("[1500730][hmfsjz 票据领用]失败", e);
             throw new RuntimeException(e);
         }
     }

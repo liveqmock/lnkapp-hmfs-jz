@@ -21,7 +21,7 @@ import java.util.List;
 
 @XStreamAlias("HMROOT")
 public class Tia5001 extends Tia {
-    public TiaHeader INFO;
+    public TiaHeader INFO = new TiaHeader();
     public Body BODY = new Body();
 
     public static class Body implements Serializable {

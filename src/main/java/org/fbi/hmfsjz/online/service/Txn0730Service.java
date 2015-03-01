@@ -15,11 +15,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 1500630 票据领用
+ * 1500730 票据领用
  */
-public class Txn0630Service {
+public class Txn0730Service {
 
-    private static final Logger logger = LoggerFactory.getLogger(Txn0630Service.class);
+    private static final Logger logger = LoggerFactory.getLogger(Txn0730Service.class);
     MybatisManager manager = new MybatisManager();
 
     public boolean process(String branchID, String tellerID, long startNo, long endNo) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
